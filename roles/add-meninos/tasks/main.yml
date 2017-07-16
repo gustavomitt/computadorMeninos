@@ -1,0 +1,24 @@
+---
+- name: Create joel user
+  user:
+    name=joel
+    comment="Joel Mazoni"
+    password=""
+    shell=/bin/bash
+  become: yes
+
+- name: Create davi user
+  user:
+    name=davi
+    comment="Davi Mazoni"
+    password=""
+    shell=/bin/bash
+  become: yes
+
+- name: Create samuel user
+  user:
+    name=samuel
+    comment="Samuel Mazoni"
+    password=""
+    shell=/bin/bash
+  become: yes

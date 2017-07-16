@@ -1,0 +1,2 @@
+[computadorMeninos]
+meninos.local ansible_user=ansible

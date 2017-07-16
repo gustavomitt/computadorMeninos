@@ -1,0 +1,30 @@
+---
+- name: Make sure we have a 'wheel' group
+  group:
+    name: wheel
+    state: present
+  become: yes
+
+- name: Allow 'wheel' group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+  become: yes
+
+- name: Create ansible user
+  user: 
+    name=ansible
+    comment="Ansible User"
+    group=wheel
+    shell=/bin/bash
+  become: yes
+
+- name: Install keys
+  authorized_key:
+    user: ansible
+    key: https://github.com/gustavomitt.keys
+  become: yes
+
+

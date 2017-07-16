@@ -1,0 +1,7 @@
+
+---
+- hosts: computadorMeninos
+
+  roles:
+     - add-meninos
+     - installPackages

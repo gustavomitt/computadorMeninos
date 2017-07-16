@@ -1,0 +1,36 @@
+---
+- name: add skype repository
+  apt_repository:
+    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+    state: present
+  become: yes
+
+- name: add skype key
+  apt_key:
+    url: "https://repo.skype.com/data/SKYPE-GPG-KEY"
+    state: present
+  become: yes
+
+- name: install skype
+  apt:
+    name: skypeforlinux
+    update_cache: yes
+  become: yes
+
+- name: add google chrome repository
+  apt_repository:
+    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+    state: present
+  become: yes
+
+- name: add google chrome key
+  apt_key:
+    url: "https://dl-ssl.google.com/linux/linux_signing_key.pub"
+    state: present
+  become: yes
+
+- name: install google chrome
+  apt:
+    name: google-chrome-stable
+    update_cache: yes
+  become: yes
